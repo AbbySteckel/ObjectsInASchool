@@ -1,28 +1,24 @@
-function Person(firstName,lastName,id){
+stuId = 1;
+teacherId = 1;
+secId = 1;
+
+function Student(firstName,lastName,grade){
+    this.grade=grade;
     this.firstName=firstName;
     this.lastName=lastName;
-    this.id=id;
+    this.id=stuId++;
 }
-
-function Student(grade){
-    this.grade=grade;
-}
-
-Student.prototype = new Person();
 
 function Teacher(firstName,lastName,subject){
     this.subject=subject;
+    this.firstName=firstName;
+    this.lastName=lastName;
+    this.id=teacherId++;
 }
-
-Teacher.prototype = new Person();
 
 function Section(name,maxSize){
     this.name=name;
     this.maxSize=maxSize;
-}
-
-function addStudent(Student,section){
-    var students=section.students;
-    students+=Student;
-
+    this.id=secId++;
+    this.currentSize=0;
 }
