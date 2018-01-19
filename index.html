@@ -8,15 +8,59 @@
     <script src="actions.js"></script>
     <link rel="stylesheet" href="style.css"/>
 </head>
-<body>
-<h1>View lists</h1>
+<body onload="listEdit(0);selectSection();selectSection2();selectStudent();selectTeacher();">
+<h1>School Management System</h1>
+<h2>Find a student</h2>
+<input type="text" id="searchStudent" value="" size="18">
+<button id="search" onclick="searchForStudent()">search</button>
+<div id="searchResult"></div>
+<button id="viewLists" onclick="displayViewLists()">view lists</button>
+<br>
 <select id="categories">
-    <option value="teacherList">teachers</option>
-    <option value="studentList">students</option>
-    <option value="sectionList">sections</option>
+    <option value="0">students</option>
+    <option value="1">teachers</option>
+    <option value="2">sections</option>
 </select>
 <br>
-<button id="listItems" onclick="listItems()">list items</button>
+<button id="listItems" onclick="listItems()">show list</button>
+<br>
 <div id="list"></div>
+<button id="editLists" onclick="displayEditLists()">edit lists</button>
+<br>
+<select id="listEdit" onchange="listEdit()">
+    <option value="0">students</option>
+    <option value="1">teachers</option>
+    <option value="2">sections</option>
+</select>
+<br>
+<div id="dataFields"></div>
+<br>
+<button id="editEnrollment" onclick="displayEditEnrollment()">edit enrollment</button>
+<div id="selectSection"></div>
+<br>
+<button id="showEnrollment" onclick="showEnrollment()">show current enrollment</button>
+<br>
+<div id="noOneEnrolled"></div>
+<div id="sectionRoster"></div>
+<div id="selectStudent"></div>
+<br>
+<button id="addStudentToSection" onclick="addStudentToSection()">add student to section</button>
+<button id="removeStudentFromSection" onclick="removeStudentFromSection()">remove student from section</button>
+<br>
+<div id="confirmationMessage"></div>
+<br>
+<button id="editTeacherAssignment" onclick="displayEditTeacherAssignment()">edit teacher assignment</button>
+<br>
+<div id="selectSection2"></div>
+<br>
+<button id="showTeacher" onclick="showTeacher()">show teacher</button>
+<br>
+<div id = "sectionTeacher"></div>
+<br>
+<div id="selectTeacher"></div>
+<br>
+<button id="addTeacherToSection" onclick="addTeacherToSection()">assign teacher to section</button>
+<br>
+<div id="confirmMessage2"></div>
 </body>
 </html>

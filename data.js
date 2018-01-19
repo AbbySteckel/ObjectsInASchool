@@ -20,6 +20,6 @@ allSections.push(new Section("US History",30));
 allSections.push(new Section("CS",32));
 allSections.push(new Section("English",30));
 
-var allItems = [allStudents,allTeachers,allSections];
+allSections[0].students.push(allStudents[0]);
 
-console.log(allItems);
+var allItems = [allStudents,allTeachers,allSections];
