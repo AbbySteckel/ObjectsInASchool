@@ -1,4 +1,7 @@
 
+
+
+
 function listItems(){
     var result = "";
     var selection=document.getElementById("categories").value;
@@ -147,6 +150,7 @@ function addStudentToSection(){
     //can't duplicate a student
     if(section.students.indexOf(student)<0){
         section.addStudent(student);
+        student.addClassToSchedule(section);
         document.getElementById("confirmationMessage").innerHTML="Student added";
     }else{
         document.getElementById("confirmationMessage").innerHTML="Student already in section";
@@ -160,6 +164,7 @@ function removeStudentFromSection(){
     var section=findSectionById(sectionId);
     var student=findStudentById(studentId);
     section.removeStudent(studentId);
+    //remove class from schedule
     document.getElementById("confirmationMessage").innerHTML="Student removed";
 }
 
@@ -220,12 +225,24 @@ function addTeacherToSection(){
 function searchForStudent(){
     var firstName=document.getElementById("searchStudent").value;
     var result="";
+    var studentSchedule="";
     for(var i=0;i<allStudents.length;i++){
         if(firstName==allStudents[i].firstName){
-            result+=allStudents[i].firstName+" "+allStudents[i].lastName+ "is in grade "+
-                allStudents[i].grade +". ";
+            result+=allStudents[i].firstName+" "+allStudents[i].lastName+ " is in grade "+
+            allStudents[i].grade +". ";
+
+            for(var j=0; j<allStudents[i].schedule.length; j++){
+                studentSchedule+=allStudents[i].schedule[j].name;
+                studentSchedule+=" ";
+            }
+
+            if(allStudents[i].schedule.length == 0) {
+                studentSchedule += "none";
+            }
+            result+="They are enrolled in the following classes: " + studentSchedule + ".";
         }
     }
+    document.getElementById("searchResult").innerHTML=result;
 }
 
 //display properties
@@ -260,6 +277,7 @@ function displayEditLists(){
 function displayEditEnrollment(){
     hideEverything();
     document.getElementById("selectSection").style.display='inline';
+    document.getElementById("sectionList").style.display='inline';
     document.getElementById("showEnrollment").style.display='inline';
     document.getElementById("noOneEnrolled").style.display='inline';
     document.getElementById("sectionRoster").style.display='inline';

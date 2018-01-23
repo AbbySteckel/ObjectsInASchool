@@ -7,6 +7,14 @@ function Student(firstName,lastName,grade){
     this.firstName=firstName;
     this.lastName=lastName;
     this.id=stuId++;
+    this.schedule=[];
+
+    this.addClassToSchedule=function(classToAdd){
+        this.schedule.push(classToAdd);
+    }
+    this.removeClassFromSchedule=function(id){
+        this.schedule.splice(this.schedule.indexOf(id),1);
+    }
 }
 
 function Teacher(firstName,lastName,subject){
